@@ -10,9 +10,10 @@ import 'bootstrap/dist/js/bootstrap.bundle.min'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const messages = language
+let loc = 'kr';
 
 const i18n = createI18n({
-    locale: 'kr', // set locale
+    locale: loc, // set locale
     fallbackLocale: 'en', // set fallback locale
     messages, // set locale messages
     // If you need to specify other options, you can set other options

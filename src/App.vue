@@ -1,7 +1,9 @@
 <template>
   <div id="nav">
     <div class="hello">
-      <p>{{ $t("message.hello") }}</p>
+      <p>{{ $t('message.hello', 'en') }}</p>
+      <p>{{ $t('message.hello', 'kr') }}</p>
+      <p>{{ $t('message.hello', 'ja') }}</p>
     </div>
     <button type="button" @click="getList">YoutubeApi콘솔찍기</button>
     <button type="button" @click="regionchangetest">지역변경테스트</button>
@@ -81,6 +83,8 @@ export default {
   },
   created() { //컴포넌트가 생성되면 실행
     this.getList();
+  },
+  mounted() {
   },
   methods: {
     regionchangetest() {
