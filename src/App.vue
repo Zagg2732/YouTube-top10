@@ -7,6 +7,7 @@
     <button type="button" @click="getList">YoutubeApi콘솔찍기</button>
     <button type="button" @click="regionchangetest">지역변경테스트</button>
     <button type="button" @click="maxchangetest">불러오는갯수테스트</button>
+    <button type="button" @click="vedioCategoryTest">카테고리변경</button>
   </div>
   <div>
     <table>
@@ -49,20 +50,20 @@ export default {
       chart : "mostPopular", //api chart, 변동없음
       maxResults : 10, //불러올 영상 갯수
       region : "KR",   //불러올 지역이름
-      videoCategryId : null, // 불러올 카테고리, null이면 실시간인기
+      videoCategoryId : 0, // 불러올 카테고리, 0이면 실시간인기
       list: [] //불러온 api를 담을 list
     };
   },
   computed : {
     url() {
       //api불러올 url
-      return `https://www.googleapis.com/youtube/v3/videos?part=${this.part}&chart=${this.chart}&key=${config.youtubeKey}&regionCode=${this.region}&maxResults=${this.maxResults}`;
+      return `https://www.googleapis.com/youtube/v3/videos?part=${this.part}&chart=${this.chart}&key=${config.youtubeKey}&regionCode=${this.region}&maxResults=${this.maxResults}&videoCategoryId=${this.videoCategoryId}`;
     },
   },
   watch : {
     url() { //url 값 변동시 getList()를 다시 실행시킴
       this.getList();
-    }
+    },
   },
   created() { //컴포넌트가 생성되면 실행
     this.getList();
@@ -82,13 +83,20 @@ export default {
         this.maxResults = 10;
       }
     },
-    async getList() {
+    vedioCategoryTest() {
+      if(this.videoCategoryId == 0) {
+        this.videoCategoryId = 2;
+      } else {
+        this.videoCategoryId = 0;
+      }
+    },
+    async getList() { //api호출
       this.list = await this.$api(this.url, "get");
       this.list = this.list.items;
-
     }
   }
 }
+
 </script>
 <style>
 
