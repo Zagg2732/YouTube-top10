@@ -3,11 +3,11 @@ import axios from "axios";
 
 export default {
     methods : {
-        async $api(url,method,data) {
+        async $api(url,method,params) {
             return (await axios({
                 method: method,
                 url,
-                data
+                params
             }).catch(e => {
                 console.log(e);
             })).data;

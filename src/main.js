@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router'
 import mixins from "@/mixins"
 import language from "/src/locales/language.json"
+import store from "@/store";
 
 //Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min'
@@ -23,5 +24,6 @@ const i18n = createI18n({
 const app = createApp(App)
 app.use(router)
 app.use(i18n)
-app.mixin(mixins);
+app.mixin(mixins)
+app.use(store)
 app.mount('#app')
