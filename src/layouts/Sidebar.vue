@@ -42,31 +42,26 @@ export default {
   components: {}, //다른 컴포넌트 사용 시 import(배열로 등록)
   data() { //html과 js코드에서 사용할 데이터 변수 선언
     return {
-      regionList: [],
-      langList: [],
-      categoryList: [],
-      selectRegion: this.$store.getters.getRegion,
-      selectLang: this.$store.getters.getLang
+      key : config.youtubeKey, //Google youtube api key
+      regionList: [],          //지역 리스트 (api 기반)
+      langList: [],            //언어 리스트 (api 기반)
+      categoryList: [],        //카테고리 리스트 (api 기반)
+      selectRegion: this.$store.getters.getRegion, //선택한 지역
+      selectLang: this.$store.getters.getLang      //선택한 언어
     }
   },
-  setup() {
-  }, //컴포지션 API
   created() {
     this.getRegionList();
     this.getLangList();
     this.getCategoryList();
   }, //컴포넌트가 생성되면 실행
-  mounted() {
-  }, //template에 정의된 html 코드가 랜더링된 후 실행
-  unmounted() {
-  }, //unmount가 완료된 후 실행
   methods: {
     changeCateId(cateId) { //카테고리변경
-      console.log(cateId)
+      this.$emit('changeCateId', cateId)
     },
     async getRegionList() {
       const params = {
-        'key': config.youtubeKey
+        'key': this.key
       }
       const res = await this.$api('https://www.googleapis.com/youtube/v3/i18nRegions', 'get', params);
       for (let i of res.items) {
@@ -75,7 +70,7 @@ export default {
     },
     async getLangList() {
       const params = {
-        'key': config.youtubeKey,
+        'key': this.key,
         'part': 'snippet'
       }
       const res = await this.$api('https://www.googleapis.com/youtube/v3/i18nLanguages', 'get', params);
@@ -85,7 +80,7 @@ export default {
     },
     async getCategoryList() {
       const params = {
-        'key': config.youtubeKey,
+        'key': this.key,
         'part': 'snippet',
         'regionCode': this.$store.getters.getRegion,
         'hl': this.$store.getters.getLang
@@ -97,7 +92,6 @@ export default {
           this.categoryList.push(i);
         }
       }
-      console.log(this.categoryList);
     }
   }, //컴포넌트 내에서 사용할 메소드 정의
   watch: {
