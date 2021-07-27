@@ -2,13 +2,14 @@
   <div class="d-flex flex-column">
     <Header/>
     <div class="container-fluid">
-      <div class="row d-flex flex-row justify-content-between g-5 w-100 vh-100">
+      <div class="row d-flex flex-row justify-content-between g-5 w-100">
         <Sidebar class="col-sm-2 py-4" />
         <Youtube class="col-sm-10 py-4 vh-0" />
       </div>
     </div>
-    <Footer/>
   </div>
+  <Footer/>
+
 </template>
 <script>
 import Header from "@/layouts/Header";
@@ -27,6 +28,11 @@ export default {
       tempLang: 'ja'
     }
   },
+  provide() {
+    return {
+      test : 'test'
+    };
+  },
   computed: {
     regionTest() {
       let defRegion = this.$store.getters.getRegion === '' || this.$store.getters.getRegion === undefined;
@@ -37,13 +43,11 @@ export default {
       return defLang ? this.$store.dispatch('defaultLang') : this.$store.getters.getLang;
     }
   },
-  provide() {
-    return {
-      regionTest: this.regionTest,
-      langTest: this.langTest
+  methods : {
+    testfunc : function (test) {
+      console.log(test)
     }
   }
-
 }
 
 </script>
