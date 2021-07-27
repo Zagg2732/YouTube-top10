@@ -88,7 +88,7 @@ export default {
       const res = await this.$api('https://www.googleapis.com/youtube/v3/videoCategories', 'get', params);
       this.categoryList.splice(0);
       for (let i of res.items) {
-        if (i.snippet.assignable == true) {
+        if (i.snippet.assignable == true && i.id != '19') { //true, 19번 카테고리는 api오류
           this.categoryList.push(i);
         }
       }

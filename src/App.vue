@@ -43,13 +43,10 @@ export default {
       return `https://www.googleapis.com/youtube/v3/videos?part=${this.part}&chart=${this.chart}&key=${config.youtubeKey}&regionCode=${this.region}&maxResults=${this.maxResults}&videoCategoryId=${this.videoCategoryId}`;
     },
     region() { //지역정보
-      return this.$store.getters.getRegion
-    },
-    regionTest() {
       let defRegion = this.$store.getters.getRegion === '' || this.$store.getters.getRegion === undefined;
       return defRegion ? this.$store.dispatch('defaultRegion') : this.$store.getters.getRegion;
     },
-    langTest() {
+    lang() {
       let defLang = this.$store.getters.getLang === '' || this.$store.getters.getLang === undefined;
       return defLang ? this.$store.dispatch('defaultLang') : this.$store.getters.getLang;
     }
@@ -60,7 +57,11 @@ export default {
     },
     region() {
       this.$refs.youtube.getList(this.url);
+    },
+    lang() {
+      this.$refs.sidebar.getCategoryList();
     }
+
   },
   methods: {
     changeCateId(cateId) {
