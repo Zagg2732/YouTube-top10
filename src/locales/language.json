@@ -1,0 +1,17 @@
+{
+  "en" : {
+    "message": {
+      "hello": "hello world"
+    }
+  },
+  "kr" : {
+    "message": {
+      "hello": "안녕하세요"
+    }
+  },
+  "ja": {
+    "message": {
+      "hello": "こんにちは、世界"
+    }
+  }
+}

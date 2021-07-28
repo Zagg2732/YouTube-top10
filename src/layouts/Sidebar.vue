@@ -108,5 +108,12 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
 
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: xx-large;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
 </style>

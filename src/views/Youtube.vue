@@ -1,18 +1,26 @@
 <template>
   <div class="youtube">
-  <div class="row">
-    <div class="col-lg-3 col-md-6 w-50"  :key="i" v-for="(product, i) in list">
-          <div class="mb-4 card"><a v-bind:href="'https://youtu.be/'+ product.id"><img class="card-img-top" v-bind:src="product.snippet.thumbnails.high.url" alt="Card image cap"/></a>
-            <div class="card-body">
-              <div class="card-title h5">{{ product.snippet.title }}</div>
-              <p class="card-text"></p></div>
-            <div class="list-group list-group-flush">
-              <div class="text-muted list-group-item" v-html="'조회수 : ' + product.statistics.viewCount" ></div>
-              <div class="text-muted list-group-item" v-html="'👍 ' + product.statistics.likeCount + ' 👎 ' + product.statistics.dislikeCount + ' ✍ ' + product.statistics.commentCount "  ></div>
-            </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-12" :key="i" v-for="(product, i) in list">
+        <div class="mb-4 card">
+          <!--          <a v-bind:href="'https://youtu.be/'+ product.id"><img class="card-img-top"-->
+          <!--                                                                v-bind:src="product.snippet.thumbnails.high.url"-->
+          <!--                                                                alt="Card image cap"/></a>-->
+          <div class="ratio ratio-16x9">
+            <iframe :src="'https://www.youtube.com/embed/' + product.id " allowfullscreen id="ytplayer" type="text/html"
+                    frameborder="0"></iframe>
+          </div>
+          <div class="card-body">
+            <div class="card-title h5">{{ product.snippet.title }}</div>
+            <p class="card-text"></p></div>
+          <div class="list-group list-group-flush">
+            <div class="text-muted list-group-item" v-html="'조회수 : ' + product.statistics.viewCount"></div>
+            <div class="text-muted list-group-item"
+                 v-html="'👍 ' + product.statistics.likeCount + ' 👎 ' + product.statistics.dislikeCount + ' ✍ ' + product.statistics.commentCount "></div>
           </div>
         </div>
-  </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,7 +29,7 @@ import config from "@/config.yml";
 
 export default {
   name: "Youtube", //컴포넌트 이름
-  inject : ['url'],
+  inject: ['url'],
   components: {}, //다른 컴포넌트 사용 시 import(배열로 등록)
   data() {
     return {

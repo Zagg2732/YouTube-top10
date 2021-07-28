@@ -3,7 +3,7 @@
     <Header/>
     <div class="container-fluid">
       <div class="row d-flex flex-row justify-content-between g-5 w-100">
-        <Sidebar v-on:changeCateId="changeCateId" class="col-sm-2 py-4"/>
+        <Sidebar v-on:changeCateId="changeCateId" class="col-sm-2 py-4" ref="sidebar"/>
         <Youtube ref="youtube" class="col-sm-10 py-4 vh-0"/>
       </div>
     </div>
