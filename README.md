@@ -47,7 +47,7 @@ Vue.js YouTube TOP-10
 
 ### Project clone
 ```
-git clone https://github.com/hi-sooyeon/vue-1week.git
+git clone https://github.com/Zagg2732/youtube-top10.git
 ```
 
 ### API key & `config.yml` File settings
