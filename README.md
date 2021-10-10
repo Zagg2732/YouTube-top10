@@ -4,10 +4,10 @@ Vue.js YouTube TOP-10
 ***
 
 ## 🔗 Link
-- **Deploy Site :** https://hi-sooyeon.github.io/youtube-top10/
+- **Deploy Site :** https://zagg2732.github.io/youtube-top10
 
 
-- **Github Repository :** https://github.com/hi-sooyeon/youtube-top10
+- **Github Repository :** https://github.com/Zagg2732/youtube-top10
 
 
 ## 📖 Summary
